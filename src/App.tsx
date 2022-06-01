@@ -53,8 +53,22 @@ export default function App() {
   }
 
   return (
-    <button className="btn waves-effect waves-light" onClick={inputHandler} type="submit" name="action">Test Folder
-      <i className="material-icons left">cloud</i>
-    </button>
+    <>
+      <button className="btn waves-effect waves-light" onClick={inputHandler} type="submit" name="action">Test Folder
+        <i className="material-icons left">cloud</i>
+      </button>
+      <div className="row">
+        <div className="col s12 m5">
+          <div className="card-panel light-blue lighten-5">
+            <span className="black-text">
+              Select a folder that contains subtitle files or subdirectories with subtitle files. 
+              Then open the browser console to see whether tests are passing or failing.
+              Note that to determine the encoding and language we're not using the NPM package but the master branch of the GitHub repository.
+            </span>
+          </div>
+        </div>
+      </div>
+    </>
+
   )
 }
