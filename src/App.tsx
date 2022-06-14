@@ -1,11 +1,17 @@
+import React, { useState } from 'react';
 import languageEncoding from "detect-file-encoding-and-language";
 import { directoryOpen } from 'browser-fs-access';
+
+type Status = '' | 'error' | 'success';
 
 const minConfidence = 0.95;
 let error = false;
 
 export default function App() {
+  const [status, setStatus] = useState<Status>('');
+
   function setError(file: any, fileInfo: any) {
+    setStatus('error');
     error = true;
     console.info('file:', file);
     console.info('fileInfo:', fileInfo);
@@ -49,6 +55,7 @@ export default function App() {
 
     if (!error) {
       console.info("All tests passed!");
+      setStatus('success');
     }
   }
 
@@ -63,9 +70,29 @@ export default function App() {
             <span className="black-text">
               Select a folder that contains subtitle files or subdirectories with subtitle files. 
               Then open the browser console to see whether tests are passing or failing.
-              Note that to determine the encoding and language we're not using the NPM package but the master branch of the GitHub repository.
+              Make sure you're running the latest version of detect-file-encoding-and-language 
+              by taking a closer look at the package in the node modules folder or by downlaoding 
+              a fresh clone of this repo!
             </span>
           </div>
+          {
+            status === 'error' && (
+              <div className="card-panel red darken-2">
+                <span className="black-text">
+                  Test failed! For more details open the console to see the error logs!
+                </span>
+              </div>
+            )
+          }
+          {
+            status === 'success' && (
+              <div className="card-panel lime accent-4">
+                <span className="black-text">
+                  All tests passed!
+                </span>
+              </div>
+            )
+          }
         </div>
       </div>
     </>
