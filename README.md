@@ -1,3 +1,4 @@
-Live version: https://detect-file-encoding-and-language-browser-test.netlify.app/
-
-> Select a folder that contains subtitle files or subdirectories with subtitle files. Then open the browser console to see whether tests are passing or failing. Note that to determine the encoding and language we're not using the NPM package but the master branch of the GitHub repository.
+The reason there is no live version for this repo is because we want to make sure to always run `npm i` before testing, so we're testing with the latest version of `detect-file-encoding-and-language` (the one on GitHub, not NPM!).
+1. `git clone`
+2. `npm i`
+3. `npm start`
